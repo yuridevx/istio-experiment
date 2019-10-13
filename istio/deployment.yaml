@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istio-experiment-info
+  labels:
+    app: istio-experiment-info
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: istio-experiment-info
+      labels:
+        app: istio-experiment-info
+    spec:
+      containers:
+        - name: istio-experiment-info
+          image: yuridevx/istio-experiment-info:latest
+          imagePullPolicy: Always
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: istio-experiment-info
