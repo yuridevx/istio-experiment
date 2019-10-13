@@ -6,7 +6,7 @@ const app = fastify(
     },
 )
 
-app.get('/info', (request, reply) => {
+app.get('/', (request, reply) => {
 
     reply.send({
         headers: request.headers,
