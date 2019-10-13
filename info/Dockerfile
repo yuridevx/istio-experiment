@@ -8,4 +8,4 @@ RUN yarn install
 
 ENTRYPOINT ["node", "-r", "ts-node/register", "server.ts"]
 
-EXPOSE 8090
+EXPOSE 9080

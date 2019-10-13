@@ -1,6 +1,8 @@
 import fastify = require('fastify')
 import os = require('os')
 import {networkInfo} from './networkInfo'
+import cookies = require('fastify-cookie');
+
 
 const app = fastify(
     {
@@ -8,9 +10,12 @@ const app = fastify(
     },
 )
 
+app.register(cookies)
+
 app.get('/', (request, reply) => {
     reply.send({
         headers: request.headers,
+        cookies: request.cookies,
         body: request.body,
     })
 })
@@ -71,4 +76,4 @@ app.get('/resources', (request, reply) => {
 })
 
 
-app.listen(9080)
+app.listen(9080, '0.0.0.0')
