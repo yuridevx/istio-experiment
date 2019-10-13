@@ -1,0 +1,17 @@
+﻿stages:
+- name: build
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./info/Dockerfile
+      buildContext: ./info
+      tag: yuridevx/istio-experiment-info
+      pushRemote: true
+      registry: index.docker.io
+- name: deploy
+  steps:
+  - applyYamlConfig:
+      path: ./istio/deployment.yaml
+  - applyYamlConfig:
+      path: ./istio/istio.yaml
+timeout: 60
+notification: {}
